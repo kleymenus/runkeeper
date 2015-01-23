@@ -3,11 +3,11 @@ $:.push File.expand_path("../lib", __FILE__)
 require "runkeeper/version"
 
 Gem::Specification.new do |s|
-	s.name        = "runkeeper_api"
+	s.name        = "runkeeper"
 	s.version     = Runkeeper::VERSION.dup
 	s.authors     = ["Alexander Kleymenov"]
 	s.email       = ["kleymenus@gmail.com"]
-	s.homepage    = "https://github.com/kleymenus/runkeeper_api"
+	s.homepage    = "https://github.com/kleymenus/runkeeper"
 	s.summary     = %q(Runkeeper API client.)
 	s.description = %q(Runkeeper API client.)
 

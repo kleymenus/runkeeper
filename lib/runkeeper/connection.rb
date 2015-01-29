@@ -13,7 +13,8 @@ class Runkeeper
 				profile: 'application/vnd.com.runkeeper.Profile+json',
 				new_activity: 'application/vnd.com.runkeeper.NewFitnessActivity+json',
 				past_sleeps: 'application/vnd.com.runkeeper.SleepSet+json',
-				new_sleep: 'application/vnd.com.runkeeper.NewSleepSet+json'
+				new_sleep: 'application/vnd.com.runkeeper.NewSleepSet+json',
+		    new_weight: 'application/vnd.com.runkeeper.NewWeightSet+json'
 		}
 
 		attr_reader :token, :user_response
@@ -54,6 +55,10 @@ class Runkeeper
 
 		def save_sleep(hash)
 			self.class.post('/sleep', :headers => headers(:new_sleep), :body => hash.to_json)
+		end
+
+		def save_weight(hash)
+			self.class.post('/weight', :headers => headers(:new_weight), :body => hash.to_json)
 		end
 
 		def self.post_authorization(code, uri)

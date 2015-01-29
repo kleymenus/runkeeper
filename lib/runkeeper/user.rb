@@ -43,6 +43,10 @@ class Runkeeper
 			Sleep.new(connection, attrs)
 		end
 
+		def new_weight(attrs={})
+			Weight.new(connection, attrs)
+		end
+
 		def activity_url(activity)
 			File.join(profile, "activity", activity.id)
 		end

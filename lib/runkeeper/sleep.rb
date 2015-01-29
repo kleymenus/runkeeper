@@ -11,6 +11,10 @@ class Runkeeper
 			end
 		end
 
+		def uri
+			@save_response && @save_response.headers['location']
+		end
+
 		def save
 			@save_response = connection.save_sleep(to_hash)
 		end

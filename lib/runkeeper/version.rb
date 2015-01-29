@@ -1,3 +1,3 @@
 class Runkeeper
-	VERSION = "0.0.25".freeze
+	VERSION = "0.0.27".freeze
 end

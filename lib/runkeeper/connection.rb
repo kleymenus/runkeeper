@@ -6,12 +6,14 @@ class Runkeeper
 		debug_output
 
 		ACCEPT_HEADERS = {
-				:user => "application/vnd.com.runkeeper.User+json",
-				:fitness_activities => "application/vnd.com.runkeeper.FitnessActivityFeed+json",
-				:past_activities => "application/vnd.com.runkeeper.FitnessActivity+json",
-				:records => "application/vnd.com.runkeeper.Records+json",
-				:profile => "application/vnd.com.runkeeper.Profile+json",
-				:new_activity => "application/vnd.com.runkeeper.NewFitnessActivity+json"
+				user: 'application/vnd.com.runkeeper.User+json',
+				fitness_activities: 'application/vnd.com.runkeeper.FitnessActivityFeed+json',
+				past_activities: 'application/vnd.com.runkeeper.FitnessActivity+json',
+				records: 'application/vnd.com.runkeeper.Records+json',
+				profile: 'application/vnd.com.runkeeper.Profile+json',
+				new_activity: 'application/vnd.com.runkeeper.NewFitnessActivity+json',
+				past_sleeps: 'application/vnd.com.runkeeper.SleepSet+json',
+				new_sleep: 'application/vnd.com.runkeeper.NewSleepSet+json'
 		}
 
 		attr_reader :token, :user_response
@@ -38,12 +40,20 @@ class Runkeeper
 			self.class.get(user_response['fitness_activities'], :headers => headers(:past_activities))
 		end
 
+		def past_sleeps
+			self.class.get('/sleep', :headers => headers(:past_sleeps))
+		end
+
 		def records
 			self.class.get(user_response['records'], :headers => headers(:records))
 		end
 
 		def save_activity(hash)
 			self.class.post(user_response['fitness_activities'], :headers => headers(:new_activity), :body => hash.to_json)
+		end
+
+		def save_sleep(hash)
+			self.class.post('/sleep', :headers => headers(:new_sleep), :body => hash.to_json)
 		end
 
 		def self.post_authorization(code, uri)
@@ -61,7 +71,7 @@ class Runkeeper
 
 		def headers(resource)
 			@auth_header.merge(
-					"Accept" => ACCEPT_HEADERS[resource],
+					"Accept" => '*/*',
 					"Content-Type" => ACCEPT_HEADERS[resource]
 			)
 		end

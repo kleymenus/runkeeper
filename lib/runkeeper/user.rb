@@ -35,6 +35,14 @@ class Runkeeper
 			Activity.new(connection, attrs)
 		end
 
+		def sleeps
+			connection.past_sleeps
+		end
+
+		def new_sleep(attrs={})
+			Sleep.new(connection, attrs)
+		end
+
 		def activity_url(activity)
 			File.join(profile, "activity", activity.id)
 		end
@@ -44,6 +52,5 @@ class Runkeeper
 		def user_profile
 			@user_profile ||= connection.profile
 		end
-
 	end
 end

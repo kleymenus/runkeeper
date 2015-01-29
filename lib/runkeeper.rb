@@ -7,6 +7,7 @@ class Runkeeper
 	autoload 'Connection', 'runkeeper/connection'
 	autoload 'User', 'runkeeper/user'
 	autoload 'Activity', 'runkeeper/activity'
+	autoload 'Sleep', 'runkeeper/sleep'
 	autoload 'Configuration', 'runkeeper/configuration'
 
 	private :initialize

@@ -14,7 +14,7 @@ class Runkeeper
 				new_activity: 'application/vnd.com.runkeeper.NewFitnessActivity+json',
 				past_sleeps: 'application/vnd.com.runkeeper.SleepSet+json',
 				new_sleep: 'application/vnd.com.runkeeper.NewSleepSet+json',
-		    new_weight: 'application/vnd.com.runkeeper.NewWeightSet+json'
+		    new_weight: 'application/vnd.com.runkeeper.NewWeight+json'
 		}
 
 		attr_reader :token, :user_response

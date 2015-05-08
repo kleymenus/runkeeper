@@ -19,11 +19,22 @@ class Runkeeper
 			@save_response = connection.save_weight(to_hash)
 		end
 
+		def single
+			@save_response = connection.save_weight(single_weight_hash)
+		end	
+
 		def to_hash
 			{
 				weight: weight,
 				fat_percent: fat_percent,
 				bmi: bmi,
+				timestamp: timestamp.strftime("%a, %d %b %Y %H:%M:%S %Z")
+			}
+		end
+
+		def single_weight_hash
+			{
+				weight: weight,
 				timestamp: timestamp.strftime("%a, %d %b %Y %H:%M:%S %Z")
 			}
 		end
